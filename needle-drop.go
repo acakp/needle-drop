@@ -6,14 +6,6 @@ import (
 	"math/rand/v2"
 )
 
-//
-// so many falses for some reason, there is a bug
-//
-// думаю нужно будет сделать так, чтобы там не
-// поле создавалось, в которое кидается игла
-// (думаю бак связан с этим), а просто использовалась
-// чисто длина между линиями
-
 func main() {
 	// space between lines
 	linesLen := 10.0
