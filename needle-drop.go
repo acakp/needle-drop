@@ -10,7 +10,7 @@ func main() {
 	// space between lines
 	linesLen := 100.0
 	// lenght of a needle
-	needleLen := 40.0
+	needleLen := 70.0
 
 	type Coordinates struct {
 		X float64
@@ -26,7 +26,7 @@ func main() {
 	// the number of times when the needle crossed lines
 	crossings := 0
 
-	iterations := 1000
+	iterations := 1000000
 	for i := 0; i < iterations; i++ {
 
 		// throw a needle, determine coordinates of the middle of the needle
@@ -64,7 +64,12 @@ func main() {
 	fmt.Println("")
 	fmt.Println("number of iterations: ", iterations)
 	fmt.Println("times the needle crossed lines: ", crossings)
-	fmt.Println("line crossing rate: ", (float64(crossings)*100)/float64(iterations), "%")
+	crRate := (float64(crossings)) / float64(iterations)
+	fmt.Println("line crossing rate: ", crRate)
+
+	pi := (2 * needleLen) / (crRate * linesLen)
+	// the closer to pi, the more accurate the result.
+	fmt.Println("pi = ", pi)
 }
 
 func isCrossing(lines []float64, needlePerp, needleCoordsY float64) bool {
