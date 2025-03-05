@@ -10,7 +10,7 @@ func main() {
 	// space between lines
 	linesLen := 100.0
 	// lenght of a needle
-	needleLen := 15.0
+	needleLen := 40.0
 
 	type Coordinates struct {
 		X float64
@@ -36,8 +36,8 @@ func main() {
 		fmt.Println("needleCoords.Y: ", needleCoords.Y)
 
 		// the angle under which the needle fell
-		// it will be a cos between needle and perpendicular to the line
-		needleAngle := math.Cos(rand.Float64()*2 - 1)
+		// gen angle in radians 0 - pi/2 (0 to 90 degrees)
+		needleAngle := rand.Float64() * (math.Pi / 2)
 		fmt.Println("needleAngle: ", needleAngle)
 
 		// determine coordinates of the lines
@@ -50,7 +50,7 @@ func main() {
 
 		// calculate lenght of pependicular of the line from middle of the needle
 		// to end of the needle
-		needlePerp := needleAngle * (needleLen / 2)
+		needlePerp := math.Cos(needleAngle) * (needleLen / 2)
 		fmt.Println("needlePerp: ", needlePerp)
 
 		isCr := isCrossing(linesCoords, needlePerp, needleCoords.Y)
